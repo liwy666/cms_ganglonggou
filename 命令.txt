@@ -1,0 +1,29 @@
+npm i webpack-cli -g //全局安装webpack-cli
+
+npm i webpack-dev-server --save-dev
+
+vue ui  --cli3可视化安装
+
+1. 运行`npm init`初始化项目，使用npm管理项目中的依赖包
+2. 创建项目基本的目录结构
+3. 使用`cnpm i jquery --save`安装jquery类库
+
+npm add webpack-cli webpack -D//webpack版本为4.0,已经安装过webpack-cli.网上找到答案说webpack和webpack-cli要一起安装,如果已经安装过webpack,可以使用如下命令重新安装
+
+npm i style-loader css-loader --save-dev
+npm i less-loader less -D//支持less
+npm i babel-core babel-loader babel-plugin-transform-runtime - -save-dev//安装babel的相关loader包
+
+
+npm i url-loader file-loader --save-dev//处理url路径的loader模块
+
+{ test: /\.vue$/, use: 'vue-loader' } // 处理 .vue 文件的 loader
+
+npm i vue-router -s //安装vue-router
+
+
+用npm run serve命令运行vue项目。
+npm run build 打包项目
+
+
+

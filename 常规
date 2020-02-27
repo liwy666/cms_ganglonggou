@@ -1,0 +1,136 @@
+//v-for
+v-for="(item) in head_swipe" :key="item.img_url"
+
+//forEach循环
+this.msg.goods_gallery.forEach((item，i) => {
+    result.push(item.img_url)
+});
+//属性转数组
+Object.values(new_goods_info.attr).forEach
+
+Object.assign({}, this.getContent)
+//深拷贝
+let data =  JSON.parse(JSON.stringify(state.carts));
+//computed变量
+computed:{
+    head_imgPreview:{
+      get:function () {
+          var result = [];
+          if(this.msg !==""){
+              this.msg.goods_gallery.forEach(item => {
+                  result.push(item.img_url)
+              });
+          }
+          return result;
+      }
+    }
+},
+
+//引入子组件
+import myEvaluateList from  './sub/my-evaluate-list'
+//挂载子组件
+components: {
+    myEvaluateInfo,//评论子组件
+},
+//引用父组件值
+props:["goods_id"],
+
+
+
+//get请求
+get(){
+     let m_loading = this.$loading({
+                                 text: '处理中'
+                             });
+    this.$fetch('',{admin_token:this.$store.state.gl_cms_token})
+        .then((msg)=>{
+               m_loading.close();
+      })
+}
+//post
+  let m_loading = this.$loading({
+                             text: '处理中'
+                         });
+    this.$post('',{admin_token:this.$store.state.gl_cms_token})
+        .then((msg)=>{
+               m_loading.close();
+    })
+
+      this.$message({
+                                            message: '操作成功',
+                                            type: 'success'
+                                        });
+
+
+  ,del(index, rows){
+                let order_sn = rows[index].order_sn;
+                this.$confirm('确认取消订单?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    let m_loading = this.$loading({
+                        text: '处理中'
+                    });
+                    this.$post('cms_call_order', {admin_token: this.$store.state.gl_cms_token, order_sn: order_sn})
+                        .then((msg) => {
+                            if (msg) {
+                                this.$message({
+                                    type: 'success',
+                                    message: '处理成功!'
+                                });
+                                //删除操作
+                                //rows.splice(index, 1);
+
+                            }
+                            m_loading.close();
+                        })
+                });
+            }
+
+//合并数组
+const middeleArray = bigArray.reduce((a,b) => {
+            return a.concat(b);
+});
+
+
+//VUEX赋值
+this.$store.commit("setGoodsInfo",msg);
+//VUEX取值
+this.$store.getters.getLoginType
+
+v-if="JSON.stringify(this.$store.state.user_info) !== '{}'"
+
+ /**
+ * 数组排序
+ * @param property
+ * @returns {function(*, *): number}
+ */
+compare(property) {
+    return function (a, b) {
+        let value1 = a[property];
+        let value2 = b[property];
+        return value1 - value2;
+    }
+},
+//方法二
+, sortChinese(arr, dataLeven) { // 参数：arr 排序的数组; dataLeven 数组内的需要比较的元素属性
+                /* 获取数组元素内需要比较的值 */
+                function getValue(option) { // 参数： option 数组元素
+                    if (!dataLeven) return option;
+                    var data = option;
+                    dataLeven.split('.').filter(function (item) {
+                        data = data[item]
+                    });
+                    return data + ''
+                }
+                arr.sort(function (item1, item2) {
+                    return getValue(item1).localeCompare(getValue(item2), 'zh-CN');
+                })
+            }
+
+middeleArray.sort((this.compare('coupon_id')));
+
+ order_list.forEach(item => {
+                        console.log(item.order_time_new);
+                    });

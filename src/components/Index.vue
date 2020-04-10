@@ -1,109 +1,142 @@
 <template>
-	<div class="index-main">
-		<el-row>
-			<el-col :span="3">
-				<div class="grid-content bg-purple">
-					<div class="nav-box">
-						<el-menu
-							mode="vertical"
-							router
-							:default-active="active"
-							background-color="rgb(57,61,73)"
-							text-color="rgb(255,255,255)"
-							class="el-menu-vertical-demo">
-							<el-submenu index="1">
-								<template slot="title">
-									<i class="el-icon-news"></i>
-									<span>商品管理</span>
-								</template>
-								<el-menu-item index="/GoodsList" @click="iniPageInfoCache">商品列表</el-menu-item>
-								<el-menu-item index="/CatList">分类列表</el-menu-item>
-								<el-menu-item index="/SupplierList">供应商</el-menu-item>
-							</el-submenu>
-							<el-submenu index="2">
-								<template slot="title">
-									<i class="el-icon-tickets"></i>
-									<span>订单管理</span>
-								</template>
-								<el-menu-item index="/OrderList">订单列表</el-menu-item>
-								<el-menu-item index="/MakeOrderList">预约订单列表</el-menu-item>
-								<el-menu-item index="/ServiceList">售后请求</el-menu-item>
-								<el-menu-item index="/EvaluateList">商品评价</el-menu-item>
-							</el-submenu>
-							<el-submenu index="3">
-								<template slot="title">
-									<i class="el-icon-picture"></i>
-									<span>广告促销</span>
-								</template>
-								<el-menu-item index="/CouponList">优惠券管理</el-menu-item>
-								<el-menu-item index="/IndexAdList" @click="iniPageInfoCache">首页广告管理</el-menu-item>
-								<el-menu-item index="/ClassifyAdList" @click="iniPageInfoCache">分类展示</el-menu-item>
-								<el-menu-item index="/ArticleList">文章管理</el-menu-item>
-								<el-menu-item index="/SearchLogList">搜索管理</el-menu-item>
-							</el-submenu>
-							<el-submenu index="4">
-								<template slot="title">
-									<i class="el-icon-goods"></i>
-									<span>工行融易购</span>
-								</template>
-								<el-menu-item index="/gh3CMobileList" @click="iniPageInfoCache">3C数码馆手机端</el-menu-item>
-								<el-menu-item index="/ghNew3cMobileList" @click="iniPageInfoCache">新3C数码馆手机端
-								</el-menu-item>
-								<el-menu-item index="/ghTMTMobileList" @click="iniPageInfoCache">酷玩科技馆手机端</el-menu-item>
-								<el-menu-item index="/ghComputerMobileList" @click="iniPageInfoCache">电脑办公馆手机端
-								</el-menu-item>
-								<el-menu-item index="/ghKettleMobileList" @click="iniPageInfoCache">水具厨具馆手机端
-								</el-menu-item>
-								<el-menu-item index="/ghAppliancesMobileList" @click="iniPageInfoCache">家电馆手机端
-								</el-menu-item>
-								<el-menu-item index="/ghNewIphone" @click="iniPageInfoCache">新Iphone手机端
-								</el-menu-item>
-								<el-menu-item index="/ghNewIphoneTwentyFour" @click="iniPageInfoCache">新Iphone24期手机端
-								</el-menu-item>
-								<el-menu-item index="/ghNewIphoneDrop" @click="iniPageInfoCache">新Iphone降价手机端
-								</el-menu-item>
-								<el-menu-item index="/ghDoubleElevenList" @click="iniPageInfoCache">双11
-								</el-menu-item>
-								<el-menu-item index="/ghDoubleElevenListBurst" @click="iniPageInfoCache">6周年庆
-								</el-menu-item>
-								<!--<el-menu-item index = "/618Mobile">618-手机</el-menu-item>-->
-								<!--<el-menu-item index = "/618PC">618-PC</el-menu-item>-->
-							</el-submenu>
-							<el-submenu index="5">
-								<template slot="title">
-									<i class="el-icon-menu"></i>
-									<span>活动页</span>
-								</template>
-								<el-menu-item index="/ArticleSign">文章打卡</el-menu-item>
-							</el-submenu>
-							<el-submenu index="6">
-								<template slot="title">
-									<i class="el-icon-setting"></i>
-									<span>其他</span>
-								</template>
-								<el-menu-item index="/UserList">用户管理</el-menu-item>
-								<el-menu-item index="/intoCountList">流量查看</el-menu-item>
-								<el-menu-item index="/AppUpdate">应用更新</el-menu-item>
-								<el-menu-item index="/FeedBack">意见反馈</el-menu-item>
-								<el-menu-item @click="outLogin"><i class="el-icon-back"></i>退出登录</el-menu-item>
-							</el-submenu>
-						</el-menu>
-					</div>
-				</div>
-			</el-col>
-			<el-col :span="21">
-				<div class="grid-content bg-purple-light">
-					<router-view></router-view>
-				</div>
-			</el-col>
-		</el-row>
-	</div>
+  <div class="index-main">
+    <el-row>
+      <el-col :span="4">
+        <div class="grid-content bg-purple">
+          <div class="nav-box">
+            <el-menu
+                mode="vertical"
+                router
+                :default-active="active"
+                background-color="rgb(57,61,73)"
+                text-color="rgb(255,255,255)"
+                class="el-menu-vertical-demo">
+              <el-submenu index="1">
+                <template slot="title">
+                  <i class="el-icon-news"></i>
+                  <span>商品管理</span>
+                </template>
+                <el-menu-item index="/GoodsList" @click="iniPageInfoCache">商品列表</el-menu-item>
+                <el-menu-item index="/CatList">分类列表</el-menu-item>
+                <el-menu-item index="/SupplierList">供应商</el-menu-item>
+              </el-submenu>
+              <el-submenu index="2">
+                <template slot="title">
+                  <i class="el-icon-tickets"></i>
+                  <span>订单管理</span>
+                </template>
+                <el-menu-item index="/OrderList">订单列表</el-menu-item>
+                <el-menu-item index="/MakeOrderList">预约订单列表</el-menu-item>
+                <el-menu-item index="/ServiceList">售后请求</el-menu-item>
+                <el-menu-item index="/EvaluateList">商品评价</el-menu-item>
+              </el-submenu>
+              <el-submenu index="3">
+                <template slot="title">
+                  <i class="el-icon-picture"></i>
+                  <span>广告促销</span>
+                </template>
+                <el-menu-item index="/CouponList">优惠券管理</el-menu-item>
+                <el-menu-item index="/IndexAdList" @click="iniPageInfoCache">首页广告管理</el-menu-item>
+                <el-menu-item index="/ClassifyAdList" @click="iniPageInfoCache">分类展示</el-menu-item>
+                <el-menu-item index="/ArticleList">文章管理</el-menu-item>
+                <el-menu-item index="/SearchLogList">搜索管理</el-menu-item>
+              </el-submenu>
+              <el-submenu index="4">
+                <template slot="title">
+                  <i class="el-icon-goods"></i>
+                  <span>工行融易购</span>
+                </template>
+                <el-menu-item index="/ghNew3cMobileList" @click="iniPageInfoCache">新3C数码馆</el-menu-item>
+                <el-menu-item index="/ghFashionSciTech" @click="iniPageInfoCache">潮流科技zone</el-menu-item>
+                <el-menu-item index="/ghTMTMobileList" @click="iniPageInfoCache">酷玩科技馆</el-menu-item>
+                <el-menu-item index="/ghComputerMobileList" @click="iniPageInfoCache">电脑办公馆</el-menu-item>
+                <el-menu-item index="/ghKettleMobileList" @click="iniPageInfoCache">水具厨具馆</el-menu-item>
+                <el-menu-item index="/ghAppliancesMobileList" @click="iniPageInfoCache">家电馆</el-menu-item>
+                <!--<el-menu-item index="/gh3CMobileList" @click="iniPageInfoCache">3C数码馆手机端</el-menu-item>-->
+                <!--<el-menu-item index="/ghNewIphone" @click="iniPageInfoCache">新Iphone</el-menu-item>
+                  <el-menu-item index="/ghNewIphoneTwentyFour" @click="iniPageInfoCache">新Iphone24期</el-menu-item>
+                  <el-menu-item index="/ghNewIphoneDrop" @click="iniPageInfoCache">新Iphone降价</el-menu-item>
+                  <el-menu-item index="/ghDoubleElevenList" @click="iniPageInfoCache">双11</el-menu-item>
+                  <el-menu-item index="/ghDoubleElevenListBurst" @click="iniPageInfoCache">开学季</el-menu-item>-->
+                <!--<el-menu-item index = "/618Mobile">618-手机</el-menu-item>-->
+                <!--<el-menu-item index = "/618PC">618-PC</el-menu-item>-->
+              </el-submenu>
+              <el-submenu index="5">
+                <template slot="title">
+                  <i class="el-icon-menu"></i>
+                  <span>活动页</span>
+                </template>
+                <el-menu-item index="/ArticleSign">文章打卡</el-menu-item>
+              </el-submenu>
+              <el-submenu index="6">
+                <template slot="title">
+                  <i class="el-icon-setting"></i>
+                  <span>其他</span>
+                </template>
+                <el-menu-item index="/UserList">用户管理</el-menu-item>
+                <el-menu-item index="/intoCountList">流量查看</el-menu-item>
+                <el-menu-item index="/AppUpdate">应用更新</el-menu-item>
+                <el-menu-item index="/FeedBack">意见反馈</el-menu-item>
+                <el-menu-item @click="outLogin"><i class="el-icon-back"></i>退出登录</el-menu-item>
+              </el-submenu>
+            </el-menu>
+          </div>
+        </div>
+      </el-col>
+      <el-col :span="20">
+        <div class="grid-content bg-purple-light">
+          <router-view></router-view>
+        </div>
+      </el-col>
+    </el-row>
+  </div>
 </template>
 <script>
     export default {
         data() {
             return {
-                default_active: '/GoodsList'
+                default_active: '/GoodsList',
+                submenus: [
+                    {
+                        titleName: "商品管理",
+                        iconName: "el-icon-news",
+                        menuItems: [
+                            {
+                                routerPath: "/GoodsList",
+                                innerText: "商品列表",
+                                onClick: this.iniPageInfoCache,
+                            },
+                            {
+                                routerPath: "/CatList",
+                                innerText: "分类列表",
+                                onClick: null
+                            },
+                            {
+                                routerPath: "/SupplierList",
+                                innerText: "供应商",
+                                onClick: null,
+                            },
+                        ],
+                    },
+                    {
+                        titleName: "商品管理",
+                        iconName: "el-icon-news",
+                        menuItems: [
+                            {
+                                routerPath: "/GoodsList",
+                                innerText: "商品列表",
+                            },
+                            {
+                                routerPath: "/CatList",
+                                innerText: "分类列表",
+                            },
+                            {
+                                routerPath: "/SupplierList",
+                                innerText: "供应商",
+                            },
+                        ],
+                    },
+                ],
             };
         },
         computed: {
@@ -239,26 +272,8 @@
     };
 </script>
 <style lang="scss" scoped>
-	.index-main {
-		height: 100%;
-	}
-
-	.el-row {
-		height: 100%;
-
-		.el-col {
-			height: 100%;
-			overflow: auto;
-
-			.bg-purple {
-				height: 100%;
-
-				.nav-box {
-					height: 100%;
-					background-color: rgb(57, 61, 73);
-				}
-			}
-
-		}
-	}
+  .nav-box {
+    height: 100vh;
+    background-color: rgb(57, 61, 73);
+  }
 </style>

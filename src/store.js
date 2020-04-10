@@ -10,12 +10,10 @@ let gl_cms_token_ = JSON.parse(localStorage.getItem('gl_cms_token') || '[]');
 let store = new Vuex.Store({
     state: {
         gl_cms_token: gl_cms_token_.token,
-    /*     api_url:'https://api.ganglonggou.com/api/v1/',
-         img_url: 'https://img-api.ganglonggou.com/',*/
-        api_url: 'https://test-api.ganglonggou.com/api/v1/',
-        img_url: 'https://test-img-api.ganglonggou.com/',
-       /*   api_url: 'http://192.168.0.137:8004/',
-         img_url: 'http://192.168.0.137:8002/',*/
+        api_url: process.env.VUE_APP_MODE === 'production' ? 'https://api.ganglonggou.com/api/v1/'
+            : 'https://test-api.ganglonggou.com/api/v1/',
+        img_url: process.env.VUE_APP_MODE === 'production' ? 'https://img-api.ganglonggou.com/'
+            : 'https://test-img-api.ganglonggou.com/',
         cat_list: [],
         cat_ad_list: [],
         goods_info: {},

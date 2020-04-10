@@ -18,7 +18,8 @@
     "vue-router": "^3.0.3",
     "vue-ueditor-wrap": "^2.4.1",
     "vuex": "^3.0.1",
-    "xlsx": "^0.14.3"
+    "xlsx": "^0.14.3",
+    "zipcelx": "^1.6.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.6.0",

@@ -4,7 +4,7 @@ import Router from 'vue-router'
 Vue.use(Router);
 
 /*导入对应的路由组件*/
-import Index from './components/Index'
+// import Index from './components/Index'
 import Login from './components/Login/Login'
 /*关于商品*/
 import GoodsList from './components/Goods/GoodsList/GoodsList'//商品列表
@@ -85,11 +85,13 @@ import CreateShareUrl from './components/ArticleSign/CreateShareUrl'
 import AppUpdate from './components/Other/AppUpdate/AppUpdate'
 /*意见反馈*/
 import FeedBack from './components/Other/FeedBack/FeedBack'
+import FashionSciTech from "./views/icbc/FashionSciTech";
+import Main from "./views/Main";
 
-var router = new Router({
+const router = new Router({
     routes: [
         {
-            path: '/index', component: Index, children: [
+            path: '/index', component: Main, children: [
                 /*子路由*/
                 {path: '/', redirect: '/GoodsList'},
                 {path: '/GoodsList', component: GoodsList},
@@ -141,6 +143,7 @@ var router = new Router({
                 {path: '/ghEditNewIphoneTwentyFour', component: ghEditNewIphoneTwentyFour},
                 {path: '/ghNewIphoneDrop', component: ghNewIphoneDrop},
                 {path: '/ghEditNewIphoneDrop', component: ghEditNewIphoneDrop},
+                {path: '/ghFashionSciTech', component: FashionSciTech},
                 {path: '/EvaluateList', component: EvaluateList},
                 {path: '/AddEvaluate', component: AddEvaluate},
                 {path: '/UserList', component: UserList},

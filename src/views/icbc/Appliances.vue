@@ -1,14 +1,15 @@
 <template>
-  <div class="fashionSciTechMain">
-    <icbc-table thisPath="ghFashionSciTech" editPath="ghEditFashionSciTech" intoType="fashion_sci_tech"
+  <div>
+    <icbc-table thisPath="ghAppliancesMobileList" editPath="ghAppliancesEditMobile" intoType="appliances_mobile"
                 ref="icbcTable"></icbc-table>
   </div>
 </template>
+
 <script>
     import icbcTable from '../../components/IcbcTable'
 
     export default {
-        name: "FashionSciTech",
+        name: "appliances",
         beforeRouteEnter(to, from, next) {
             next(vm => {
                 vm.$nextTick(() => {
@@ -29,6 +30,7 @@
         }
     }
 </script>
-<style lang="scss" scoped>
+
+<style scoped lang="scss">
 
 </style>

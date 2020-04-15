@@ -19,7 +19,7 @@ import ShearOrCopyGoods from './components/Goods/CatList/EditCat/ShearOrCopyGood
 import SupplierList from './components/Goods/SupplierList/SupplierList'
 import EditSupplier from './components/Goods/SupplierList/EditSupplier'
 /*关于订单*/
-import OrderList from './components/Order/OrderList/OrderList'//订单列表
+import OrderList from './views/OrderList'//订单列表
 import MakeOrderList from './components/Order/MakeOrderList/MakeOrderList'//订单列表
 import EditLogistics from './components/Order/OrderList/EditLogistics'//编辑物流
 import seeOrder from './components/Order/OrderList/SeeOrder'//查看订单
@@ -38,33 +38,35 @@ import EditAbcIndexAd from './components/Ad/IndexAd/EditAbcIndexAd'//农行首�
 import ClassifyAdList from './components/Ad/Classify/ClassifyAdList'//广告列表
 import EditClassifyAd from './components/Ad/Classify/EditClassifyAd'//编辑广告
 
-/*关于3C*/
-import gh_618_mobile from './components/3c/618moblie/618mobile'//3c-618手机广告
-import Edit618mobile from './components/3c/618moblie/Edit618mobile'//3c-618手机广告
-import gh_618_pc from './components/3c/618pc/618pc'//3c-618电脑广告
-import Edit618pc from './components/3c/618pc/Edit618pc'//3c-618电脑广告
-import gh3CMobileList from './components/3c/Mobile/Mobile'//3c手机端
-import gh3CEditMobile from './components/3c/Mobile/EditMobile'//新3c手机端
-import ghNew3cMobile from './components/3c/New3cMobile/New3cMobile'//新3c手机端
-import ghEditNew3cMobile from './components/3c/New3cMobile/EditNew3cMobile'//3c手机端
-import ghTMTMobileList from './components/3c/TMTMobile/Mobile'//科技手机端
-import ghTMTEditMobile from './components/3c/TMTMobile/EditMobile'//科技手机端
-import ghComputerMobileList from './components/3c/Computer/Computer'//电脑馆手机端
-import ghComputerEditMobile from './components/3c/Computer/EditComputer'//电脑馆手机端
-import ghKettleMobileList from './components/3c/KettleMobile/KettleMobile'//水具手机端
+/*关于工行*/
+// import gh_618_mobile from './components/3c/618moblie/618mobile'//3c-618手机广告
+// import Edit618mobile from './components/3c/618moblie/Edit618mobile'//3c-618手机广告
+// import gh_618_pc from './components/3c/618pc/618pc'//3c-618电脑广告
+// import Edit618pc from './components/3c/618pc/Edit618pc'//3c-618电脑广告
+// import gh3CMobileList from './components/3c/Mobile/Mobile'//3c手机端
+//import gh3CEditMobile from './components/3c/Mobile/EditMobile'//新3c手机端
+// import ghTMTMobileList from './components/3c/TMTMobile/Mobile'//科技手机端
+// import ghTMTEditMobile from './components/3c/TMTMobile/EditMobile'//科技手机端
+// import ghComputerMobileList from './components/3c/Computer/Computer'//电脑馆手机端
+// import ghComputerEditMobile from './components/3c/Computer/EditComputer'//电脑馆手机端
+// import ghDoubleEleven from './components/3c/DoubleEleven/DoubleEleven'//双11
+// import ghDoubleElevenEdit from './components/3c/DoubleEleven/EditDoubleEleven'//双11
+// import ghDoubleElevenBurst from './components/3c/DoubleElevenBurst/DoubleEleven'//双11爆发
+// import ghDoubleElevenEditBurst from './components/3c/DoubleElevenBurst/EditDoubleEleven'//双11爆发
+// import ghNewIphone from './components/3c/NewIphone/NewIphone'//新Iphone
+// import ghEditNewIphone from './components/3c/NewIphone/EditNewIphone'//新Iphone
+// import ghNewIphoneTwentyFour from './components/3c/NewIphoneTwentyFour/NewIphone'//新Iphone
+// import ghEditNewIphoneTwentyFour from './components/3c/NewIphoneTwentyFour/EditNewIphone'//新Iphone
+// import ghNewIphoneDrop from './components/3c/NewIphoneDrop/NewIphone'//新Iphone
+// import ghEditNewIphoneDrop from './components/3c/NewIphoneDrop/EditNewIphone'//新Iphone
+import ghDigitalProduct from './views/icbc/DigitalProduct'//新3c手机端
+import ghEditNew3cMobile from './views/icbc/EditDigitalProduct'//3c手机端
+import ghKettleMobileList from './views/icbc/Kettle'//水具手机端
 import ghKettleEditMobile from './components/3c/KettleMobile/EditKettleMobile'//水具手机端
-import ghAppliancesMobileList from './components/3c/AppliancesMobile/AppliancesMobile'//家电手机端
+import ghAppliancesMobileList from './views/icbc/Appliances'//家电手机端
 import ghAppliancesEditMobile from './components/3c/AppliancesMobile/EditAppliancesMobile'//家电手机端
-import ghDoubleEleven from './components/3c/DoubleEleven/DoubleEleven'//双11
-import ghDoubleElevenEdit from './components/3c/DoubleEleven/EditDoubleEleven'//双11
-import ghDoubleElevenBurst from './components/3c/DoubleElevenBurst/DoubleEleven'//双11爆发
-import ghDoubleElevenEditBurst from './components/3c/DoubleElevenBurst/EditDoubleEleven'//双11爆发
-import ghNewIphone from './components/3c/NewIphone/NewIphone'//新Iphone
-import ghEditNewIphone from './components/3c/NewIphone/EditNewIphone'//新Iphone
-import ghNewIphoneTwentyFour from './components/3c/NewIphoneTwentyFour/NewIphone'//新Iphone
-import ghEditNewIphoneTwentyFour from './components/3c/NewIphoneTwentyFour/EditNewIphone'//新Iphone
-import ghNewIphoneDrop from './components/3c/NewIphoneDrop/NewIphone'//新Iphone
-import ghEditNewIphoneDrop from './components/3c/NewIphoneDrop/EditNewIphone'//新Iphone
+import FashionSciTech from "./views/icbc/FashionSciTech";//潮流科技馆
+import EditFashionSciTech from "./views/icbc/EditFashionSciTech";//潮流科技馆
 /*评价*/
 import EvaluateList from './components/Order/EvaluateList/EvaluateList'//评价列表
 import AddEvaluate from './components/Order/EvaluateList/AddEvaluate' //添加评价
@@ -85,7 +87,6 @@ import CreateShareUrl from './components/ArticleSign/CreateShareUrl'
 import AppUpdate from './components/Other/AppUpdate/AppUpdate'
 /*意见反馈*/
 import FeedBack from './components/Other/FeedBack/FeedBack'
-import FashionSciTech from "./views/icbc/FashionSciTech";
 import Main from "./views/Main";
 
 const router = new Router({
@@ -115,35 +116,14 @@ const router = new Router({
                 {path: '/EditRedBullHWGoodsIndexAd', component: EditRedBullHWGoodsIndexAd},
                 {path: '/EditWxIndexAd', component: EditWxIndexAd},
                 {path: '/EditAbcIndexAd', component: EditAbcIndexAd},
-                {path: '/618Mobile', component: gh_618_mobile},
-                {path: '/Edit618mobile', component: Edit618mobile},
-                {path: '/618PC', component: gh_618_pc},
-                {path: '/Edit618PC', component: Edit618pc},
-                {path: '/gh3CMobileList', component: gh3CMobileList},
-                {path: '/gh3CEditMobile', component: gh3CEditMobile},
-                {path: '/ghTMTMobileList', component: ghTMTMobileList},
-                {path: '/ghTMTEditMobile', component: ghTMTEditMobile},
-                {path: '/ghComputerMobileList', component: ghComputerMobileList},
-                {path: '/ghComputerEditMobile', component: ghComputerEditMobile},
                 {path: '/ghKettleMobileList', component: ghKettleMobileList},
                 {path: '/ghKettleEditMobile', component: ghKettleEditMobile},
                 {path: '/ghAppliancesMobileList', component: ghAppliancesMobileList},
                 {path: '/ghAppliancesEditMobile', component: ghAppliancesEditMobile},
-                {path: '/ghDoubleElevenList', component: ghDoubleEleven},
-                {path: '/ghDoubleElevenEdit', component: ghDoubleElevenEdit},
-                {path: '/ghDoubleElevenListBurst', component: ghDoubleElevenBurst},
-                {path: '/ghDoubleElevenEditBurst', component: ghDoubleElevenEditBurst},
-                {path: '/ghNew3cMobileList', component: ghNew3cMobile},
+                {path: '/ghDigitalProduct', component: ghDigitalProduct},
                 {path: '/ghEditNew3cMobile', component: ghEditNew3cMobile},
-                {path: '/ghNew3cMobileList', component: ghNew3cMobile},
-                {path: '/ghEditNew3cMobile', component: ghEditNew3cMobile},
-                {path: '/ghNewIphone', component: ghNewIphone},
-                {path: '/ghEditNewIphone', component: ghEditNewIphone},
-                {path: '/ghNewIphoneTwentyFour', component: ghNewIphoneTwentyFour},
-                {path: '/ghEditNewIphoneTwentyFour', component: ghEditNewIphoneTwentyFour},
-                {path: '/ghNewIphoneDrop', component: ghNewIphoneDrop},
-                {path: '/ghEditNewIphoneDrop', component: ghEditNewIphoneDrop},
                 {path: '/ghFashionSciTech', component: FashionSciTech},
+                {path: '/ghEditFashionSciTech', component: EditFashionSciTech},
                 {path: '/EvaluateList', component: EvaluateList},
                 {path: '/AddEvaluate', component: AddEvaluate},
                 {path: '/UserList', component: UserList},

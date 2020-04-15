@@ -1,38 +1,44 @@
 <template>
   <div class="mainMain">
-    <el-row>
-      <el-col :span="4">
-        <div class="grid-content bg-purple">
-          <div class="nav-box">
-            <el-menu
-                mode="vertical"
-                router
-                :default-active="active"
-                background-color="rgb(57,61,73)"
-                text-color="rgb(255,255,255)"
-                class="el-menu-vertical-demo">
-              <el-submenu v-for="(submenusItem,submenusIndex) in submenus" :index="submenusIndex.toString()"
-                          :key="submenusIndex">
-                <template slot="title">
-                  <i :class="submenusItem.iconName"></i>
-                  <span>{{submenusItem.titleName}}</span>
-                </template>
-                <span v-for="(menuItem,menuIndex) in submenusItem.menuItems" :key="menuIndex">
+    <el-container>
+      <el-aside style="background-color:rgb(57,61,73);width: 200px;">
+        <el-menu
+            mode="vertical"
+            router
+            :default-active="active"
+            background-color="rgb(57,61,73)"
+            text-color="rgb(255,255,255)"
+            class="el-menu-vertical-demo">
+          <el-submenu v-for="(submenusItem,submenusIndex) in submenus" :index="submenusIndex.toString()"
+                      :key="submenusIndex">
+            <template slot="title">
+              <i :class="submenusItem.iconName"></i>
+              <span>{{submenusItem.titleName}}</span>
+            </template>
+            <span v-for="(menuItem,menuIndex) in submenusItem.menuItems" :key="menuIndex">
                      <el-menu-item v-if="menuItem.hasOwnProperty('onClick')" :index="menuItem.routerPath"
                                    @click="menuItem.onClick" :key="menuIndex">{{menuItem.innerText}}</el-menu-item>
                    <el-menu-item v-else :index="menuItem.routerPath"
                                  :key="menuIndex">{{menuItem.innerText}}</el-menu-item>
                 </span>
 
-              </el-submenu>
-            </el-menu>
-          </div>
-        </div>
-      </el-col>
-      <el-col :span="20">
+          </el-submenu>
+        </el-menu>
+      </el-aside>
+      <el-main>
         <router-view></router-view>
-      </el-col>
-    </el-row>
+      </el-main>
+    </el-container>
+    <!--    <el-row>-->
+    <!--      <el-col :span="4">-->
+    <!--        <div class="nav-box">-->
+    <!--         -->
+    <!--        </div>-->
+    <!--      </el-col>-->
+    <!--      <el-col :span="20">-->
+    <!--        -->
+    <!--      </el-col>-->
+    <!--    </el-row>-->
   </div>
 </template>
 <script>
@@ -40,7 +46,6 @@
         name: "Main",
         data() {
             return {
-                //default_active: '/GoodsList',
                 submenus: [
                     {
                         titleName: "商品管理",
@@ -114,20 +119,12 @@
                         iconName: "el-icon-goods",
                         menuItems: [
                             {
-                                routerPath: "/ghNew3cMobileList",
+                                routerPath: "/ghDigitalProduct",
                                 innerText: "新3C数码馆",
                             },
                             {
                                 routerPath: "/ghFashionSciTech",
                                 innerText: "潮流科技zone",
-                            },
-                            {
-                                routerPath: "/ghTMTMobileList",
-                                innerText: "酷玩科技馆",
-                            },
-                            {
-                                routerPath: "/ghComputerMobileList",
-                                innerText: "电脑办公馆",
                             },
                             {
                                 routerPath: "/ghKettleMobileList",
@@ -231,11 +228,10 @@
         },
     };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
   .mainMain {
-    .nav-box {
+    .el-container {
       height: 100vh;
-      background-color: rgb(57, 61, 73);
     }
   }
 

@@ -21,7 +21,6 @@
                    <el-menu-item v-else :index="menuItem.routerPath"
                                  :key="menuIndex">{{menuItem.innerText}}</el-menu-item>
                 </span>
-
           </el-submenu>
         </el-menu>
       </el-aside>
@@ -29,16 +28,6 @@
         <router-view></router-view>
       </el-main>
     </el-container>
-    <!--    <el-row>-->
-    <!--      <el-col :span="4">-->
-    <!--        <div class="nav-box">-->
-    <!--         -->
-    <!--        </div>-->
-    <!--      </el-col>-->
-    <!--      <el-col :span="20">-->
-    <!--        -->
-    <!--      </el-col>-->
-    <!--    </el-row>-->
   </div>
 </template>
 <script>
@@ -146,6 +135,20 @@
                             },
                         ],
                     },
+                    /*{
+                        titleName: "管理",
+                        iconName: "el-icon-s-platform",
+                        menuItems: [
+                            {
+                                routerPath: "/adminUserList",
+                                innerText: "人员管理",
+                            },
+                            {
+                                routerPath: "/menusList",
+                                innerText: "菜单管理",
+                            },
+                        ],
+                    },*/
                     {
                         titleName: "其他",
                         iconName: "el-icon-setting",

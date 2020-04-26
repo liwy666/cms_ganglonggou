@@ -1,123 +1,139 @@
 <template>
-	<div class="main">
-		<div class="form-box">
-			<el-form ref="form" :model="form" label-width="150px" :rules="rules" size="mini">
-				<el-form-item label="优惠券名称" prop="coupon_name">
-					<el-input v-model="form.coupon_name"></el-input>
-				</el-form-item>
-				<el-form-item label="优惠券描述" prop="coupon_desc">
-					<el-input v-model="form.coupon_desc"></el-input>
-					<el-alert
-						title="用户可见"
-						type="warning">
-					</el-alert>
-				</el-form-item>
-				<el-form-item label="发放时间" prop="grant_time">
-					<el-date-picker
-						v-model="form.grant_time"
-						type="datetimerange"
-						value-format="timestamp"
-						range-separator="至"
-						start-placeholder="开始日期"
-						end-placeholder="结束日期">
-					</el-date-picker>
-				</el-form-item>
-				<el-form-item label="使用时间" prop="use_time">
-					<el-date-picker
-						v-model="form.use_time"
-						type="datetimerange"
-						value-format="timestamp"
-						range-separator="至"
-						start-placeholder="开始日期"
-						end-placeholder="结束日期">
-					</el-date-picker>
-				</el-form-item>
-				<el-form-item label="满足金额:">
-					<el-input-number v-model="form.found_sum" :min="1" :precision="2"
-									 prop="found_sum"
-									 :controls="false"></el-input-number>
-				</el-form-item>
-				<el-form-item label="减免金额:">
-					<el-input-number v-model="form.cut_sum" :min="0" :precision="2"
-									 prop="cut_sum"
-									 :controls="false"></el-input-number>
-				</el-form-item>
-				<el-form-item label="发放数量:">
-					<el-input-number v-model="form.coupon_number" :min="0" :precision="0"
-									 prop="coupon_number"
-									 :controls="false"></el-input-number>
-				</el-form-item>
-				<el-form-item label="剩余数量:">
-					<el-input-number v-model="form.coupon_remainder_number" :min="0" :max="form.coupon_number"
-									 :precision="0"
-									 prop="coupon_remainder_number"
-									 :controls="false"></el-input-number>
-				</el-form-item>
-				<el-form-item label="入口类型:">
-					<el-select v-model="form.into_type" placeholder="请选择">
-						<el-option
-							v-for="item in coupon_inlet_options"
-							:key="item.value"
-							:label="item.label"
-							:value="item.value">
-						</el-option>
-					</el-select>
-				</el-form-item>
-				<el-form-item label="优惠券类型:">
-					<el-select v-model="form.grant_type" placeholder="请选择">
-						<el-option
-							v-for="item in grant_type_options"
-							:key="item.value"
-							:label="item.label"
-							:value="item.value">
-						</el-option>
-					</el-select>
-				</el-form-item>
-				<el-form-item label="可用分类" v-show="form.grant_type === 'classify'">
-					<el-select v-model="form.classify" placeholder="请选择" multiple>
-						<el-option-group
-							v-for="group in cat_option"
-							:key="group.label"
-							:label="group.label">
-							<el-option
-								v-for="item in group.options"
-								:key="item.value"
-								:label="item.label"
-								:value="item.value">
-							</el-option>
-						</el-option-group>
-					</el-select>
-				</el-form-item>
-				<el-form-item label="可用商品" v-show="form.grant_type === 'solo'">
-					<el-select
-						v-model="form.solo"
-						multiple
-						filterable
-						remote
-						reserve-keyword
-						placeholder="请输入关键词，进行商品搜索"
-						:remote-method="searchGoods"
-						:loading="goods_loading">
-						<el-option
-							v-for="item in goods_options"
-							:key="item.value"
-							:label="item.label"
-							:value="item.value">
-						</el-option>
-					</el-select>
-				</el-form-item>
-				<el-form-item>
-					<el-button type="primary" @click="onSubmit">确认保存</el-button>
-				</el-form-item>
-			</el-form>
-		</div>
-	</div>
+  <div class="main">
+    <div class="card-box" v-show="couponId>0">
+      <el-card class="box-card">
+        <div slot="header">
+          <span>小结</span>
+        </div>
+        <div>
+          <p>累计领取：{{couponGetNumber}}张</p>
+          <p>累计使用：{{couponUseNumber}}张</p>
+          <p>累计未使用：{{couponWithoutUseNumber}}张</p>
+        </div>
+      </el-card>
+    </div>
+    <div class="form-box">
+      <el-form ref="form" :model="form" label-width="150px" :rules="rules" size="mini">
+        <el-form-item label="优惠券名称" prop="coupon_name">
+          <el-input v-model="form.coupon_name"></el-input>
+        </el-form-item>
+        <el-form-item label="优惠券描述" prop="coupon_desc">
+          <el-input v-model="form.coupon_desc"></el-input>
+          <el-alert
+              title="用户可见"
+              type="warning">
+          </el-alert>
+        </el-form-item>
+        <el-form-item label="发放时间" prop="grant_time">
+          <el-date-picker
+              v-model="form.grant_time"
+              type="datetimerange"
+              value-format="timestamp"
+              range-separator="至"
+              start-placeholder="开始日期"
+              end-placeholder="结束日期">
+          </el-date-picker>
+        </el-form-item>
+        <el-form-item label="使用时间" prop="use_time">
+          <el-date-picker
+              v-model="form.use_time"
+              type="datetimerange"
+              value-format="timestamp"
+              range-separator="至"
+              start-placeholder="开始日期"
+              end-placeholder="结束日期">
+          </el-date-picker>
+        </el-form-item>
+        <el-form-item label="满足金额:">
+          <el-input-number v-model="form.found_sum" :min="1" :precision="2"
+                           prop="found_sum"
+                           :controls="false"></el-input-number>
+        </el-form-item>
+        <el-form-item label="减免金额:">
+          <el-input-number v-model="form.cut_sum" :min="0" :precision="2"
+                           prop="cut_sum"
+                           :controls="false"></el-input-number>
+        </el-form-item>
+        <el-form-item label="发放数量:">
+          <el-input-number v-model="form.coupon_number" :min="0" :precision="0"
+                           prop="coupon_number"
+                           :controls="false"></el-input-number>
+        </el-form-item>
+        <el-form-item label="剩余数量:">
+          <el-input-number v-model="form.coupon_remainder_number" :min="0" :max="form.coupon_number"
+                           :precision="0"
+                           prop="coupon_remainder_number"
+                           :controls="false"></el-input-number>
+        </el-form-item>
+        <el-form-item label="入口类型:">
+          <el-select v-model="form.into_type" placeholder="请选择">
+            <el-option
+                v-for="item in coupon_inlet_options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value">
+            </el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="优惠券类型:">
+          <el-select v-model="form.grant_type" placeholder="请选择">
+            <el-option
+                v-for="item in grant_type_options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value">
+            </el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="可用分类" v-show="form.grant_type === 'classify'">
+          <el-select v-model="form.classify" placeholder="请选择" multiple>
+            <el-option-group
+                v-for="group in cat_option"
+                :key="group.label"
+                :label="group.label">
+              <el-option
+                  v-for="item in group.options"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value">
+              </el-option>
+            </el-option-group>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="可用商品" v-show="form.grant_type === 'solo'">
+          <el-select
+              v-model="form.solo"
+              multiple
+              filterable
+              remote
+              reserve-keyword
+              placeholder="请输入关键词，进行商品搜索"
+              :remote-method="searchGoods"
+              :loading="goods_loading">
+            <el-option
+                v-for="item in goods_options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value">
+            </el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="onSubmit">确认保存</el-button>
+        </el-form-item>
+      </el-form>
+    </div>
+  </div>
 </template>
 
 <script>
     export default {
         data() {
             return {
+                couponId: 0,
+                couponGetNumber: 0,
+                couponUseNumber: 0,
+                couponWithoutUseNumber: 0,
                 form: {
                     coupon_name: '',
                     coupon_desc: '',
@@ -166,7 +182,6 @@
                 classify_options: [],
                 goods_options: [],
                 goods_loading: false,
-                coupon_info: {},
             };
         },
         computed: {
@@ -195,7 +210,7 @@
                 this.$store.dispatch("getCatList", this.$store.state.gl_cms_token);
             }
             if (this.$route.query.type === 'upd') {
-                this.coupon_info = JSON.parse(this.$route.query.coupon_info);
+                this.couponId = this.$route.query.couponId;
                 this.getCouponInfo();
             }
         },
@@ -252,12 +267,24 @@
                 });
             }
             , getCouponInfo() {
-                this.form = this.coupon_info;
-                this.$set(this.form, 'grant_time', new Array(new Date(this.coupon_info.start_grant_time).getTime(), new Date(this.coupon_info.end_grant_time).getTime()));
-                this.$set(this.form, 'use_time', new Array(new Date(this.coupon_info.start_use_time).getTime(), new Date(this.coupon_info.end_use_time).getTime()));
-                if (this.form.grant_type === 'solo') {
-                    this.getGoodsOptions(this.form.solo);
-                }
+                const pageLoading = this.$loading();
+                this.$fetch("get_coupon_info", {
+                    admin_token: this.$store.state.gl_cms_token,
+                    coupon_id: this.couponId
+                }).then((msg) => {
+                    this.couponGetNumber = msg.getNumber;
+                    this.couponUseNumber = msg.useNumber;
+                    this.couponWithoutUseNumber = msg.withoutUseNumber;
+                    this.form = msg;
+                    this.$set(this.form, 'grant_time', new Array(new Date(msg.start_grant_time).getTime(), new Date(msg.end_grant_time).getTime()));
+                    this.$set(this.form, 'use_time', new Array(new Date(msg.start_use_time).getTime(), new Date(msg.end_use_time).getTime()));
+                    if (this.form.grant_type === 'solo') {
+                        this.getGoodsOptions(this.form.solo);
+                    }
+                    pageLoading.close();
+                });
+
+
             }
             /*获取商品选项*/
             , getGoodsOptions(goods_id_array) {
@@ -296,8 +323,8 @@
 </script>
 
 <style lang="scss" scoped>
-	.form-box {
-		width: 70%;
-		margin-top: 50px;
-	}
+  .form-box {
+    width: 70%;
+    margin-top: 50px;
+  }
 </style>

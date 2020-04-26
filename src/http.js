@@ -3,8 +3,7 @@ import Qs from 'qs'
 import {Message} from 'element-ui';
 
 axios.defaults.timeout = 0;
-axios.defaults.baseURL = process.env.VUE_APP_MODE === 'production' ? 'https://api.ganglonggou.com/api/v1/cms'
-    : 'https://test-api.ganglonggou.com/api/v1/cms';
+axios.defaults.baseURL = process.env.VUE_APP_API_URL;
 
 
 //http request 拦截器

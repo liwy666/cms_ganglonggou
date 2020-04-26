@@ -133,7 +133,7 @@
                     })
             }
             , editCoupon(index, rows) {
-                this.$router.push({path: 'EditCoupon', query: {type: 'upd', coupon_info: JSON.stringify(rows[index])}})
+                this.$router.push({path: 'EditCoupon', query: {type: 'upd', couponId: rows[index]['coupon_id']}})
             }
             , delCoupon(index, rows) {
                 let coupon_id = rows[index].coupon_id;

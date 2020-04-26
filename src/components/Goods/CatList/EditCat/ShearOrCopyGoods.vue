@@ -1,31 +1,26 @@
 <template>
-	<div class="main">
-		<div class="form-box">
-			<el-form ref="form" :model="form" :rules="rules" label-width="80px" size="mini">
-				<el-form-item :label="move_type + '到分类'" prop="parent_id">
-					<el-select v-model="form.aim_cat_id" placeholder="请选择">
-						<el-option
-										v-for="item in options"
-										:key="item.value"
-										:label="item.label"
-										:value="item.value">
-						</el-option>
-					</el-select>
-				</el-form-item>
-				<el-form-item>
-					<el-button type="primary" @click="onSubmit">{{'确认'+ this.move_type + '商品'}}</el-button>
-				</el-form-item>
-			</el-form>
-		</div>
-	</div>
+  <div class="main">
+    <div class="form-box">
+      <el-form ref="form" :model="form" :rules="rules" label-width="80px" size="mini">
+        <el-form-item :label="move_type + '到分类'" prop="parent_id">
+          <select-category v-model="form.aim_cat_id" :delete-cat-id="parseInt(cat_id)"></select-category>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="onSubmit">{{'确认'+ this.move_type + '商品'}}</el-button>
+        </el-form-item>
+      </el-form>
+    </div>
+  </div>
 </template>
 
 <script>
+    import SelectCategory from "../../../SelectCategory";
+
     export default {
         data() {
             return {
                 form: {
-                    aim_cat_id: ''
+                    aim_cat_id: 0
                 },
                 rules: {
                     aim_cat_id: [
@@ -33,28 +28,10 @@
                     ],
                 },
                 move_type: '复制',
-                cat_id: ''
+                cat_id: 0,
             };
         },
-        computed: {
-            options: {
-                get: function () {
-                    let result = [];
-                    if (this.$store.state.cat_list.length > 0) {
-                        this.$store.state.cat_list.forEach(item => {
-                            if (item.parent_id !== 0) {
-                                result.push({value: item.cat_id, label: item.cat_name})
-                            }
-                        });
-                    }
-                    return result;
-                }
-            }
-        },
         created() {
-            if (this.$store.state.cat_list.length < 1) {
-                this.getCatList();
-            }
             this.move_type = this.$route.query.move_type;
             this.cat_id = this.$route.query.cat_id;
         },
@@ -66,7 +43,7 @@
                     } else {
                         let post_url = '';
                         if (this.move_type === '转移') {
-                            post_url = 'cms_shear_goods_by_catid';
+                            post_url = 'shear_goods_by_catid';
                         } else if (this.move_type === '复制') {
                             post_url = 'cms_copy_goods_by_catid';
                         }
@@ -81,7 +58,7 @@
                             .then((msg) => {
                                 if (msg) {
                                     this.$message({
-                                        message: '操作成功',
+                                        message: msg,
                                         type: 'success'
                                     });
                                     this.$router.go(-1);
@@ -92,26 +69,16 @@
                     }
                 });
             }
-            /*获取分类表*/
-            , getCatList() {
-                let m_loading = this.$loading({
-                    text: '获取分类列表'
-                });
-                this.$fetch('cms_get_cat_list', {
-                    admin_token: this.$store.state.gl_cms_token,
-                })
-                    .then((msg) => {
-                        this.$set(this.$store.state, 'cat_list', msg);
-                        m_loading.close();
-                    })
-            },
         },
+        components: {
+            "select-category": SelectCategory,
+        }
     };
 </script>
 
 <style lang="scss" scoped>
-	.form-box {
-		margin-top: 50px;
-		width: 60%;
-	}
+  .form-box {
+    margin-top: 50px;
+    width: 60%;
+  }
 </style>

@@ -19,7 +19,7 @@ import ShearOrCopyGoods from './components/Goods/CatList/EditCat/ShearOrCopyGood
 import SupplierList from './components/Goods/SupplierList/SupplierList'
 import EditSupplier from './components/Goods/SupplierList/EditSupplier'
 /*关于订单*/
-import OrderList from './views/OrderList'//订单列表
+import OrderList from './views/Order/OrderList'//订单列表
 import MakeOrderList from './components/Order/MakeOrderList/MakeOrderList'//订单列表
 import EditLogistics from './components/Order/OrderList/EditLogistics'//编辑物流
 import seeOrder from './components/Order/OrderList/SeeOrder'//查看订单
@@ -59,14 +59,14 @@ import EditClassifyAd from './components/Ad/Classify/EditClassifyAd'//编辑广�
 // import ghEditNewIphoneTwentyFour from './components/3c/NewIphoneTwentyFour/EditNewIphone'//新Iphone
 // import ghNewIphoneDrop from './components/3c/NewIphoneDrop/NewIphone'//新Iphone
 // import ghEditNewIphoneDrop from './components/3c/NewIphoneDrop/EditNewIphone'//新Iphone
-import ghDigitalProduct from './views/icbc/DigitalProduct'//新3c手机端
-import ghEditNew3cMobile from './views/icbc/EditDigitalProduct'//3c手机端
-import ghKettleMobileList from './views/icbc/Kettle'//水具手机端
+import ghDigitalProduct from './views/ICBC/DigitalProduct'//新3c手机端
+import ghEditNew3cMobile from './views/ICBC/EditDigitalProduct'//3c手机端
+import ghKettleMobileList from './views/ICBC/Kettle'//水具手机端
 import ghKettleEditMobile from './components/3c/KettleMobile/EditKettleMobile'//水具手机端
-import ghAppliancesMobileList from './views/icbc/Appliances'//家电手机端
+import ghAppliancesMobileList from './views/ICBC/Appliances'//家电手机端
 import ghAppliancesEditMobile from './components/3c/AppliancesMobile/EditAppliancesMobile'//家电手机端
-import FashionSciTech from "./views/icbc/FashionSciTech";//潮流科技馆
-import EditFashionSciTech from "./views/icbc/EditFashionSciTech";//潮流科技馆
+import FashionSciTech from "./views/ICBC/FashionSciTech";//潮流科技馆
+import EditFashionSciTech from "./views/ICBC/EditFashionSciTech";//潮流科技馆
 /*评价*/
 import EvaluateList from './components/Order/EvaluateList/EvaluateList'//评价列表
 import AddEvaluate from './components/Order/EvaluateList/AddEvaluate' //添加评价
@@ -88,6 +88,12 @@ import AppUpdate from './components/Other/AppUpdate/AppUpdate'
 /*意见反馈*/
 import FeedBack from './components/Other/FeedBack/FeedBack'
 import Main from "./views/Main";
+/*后端用户管理*/
+import AdminUserList from "./views/AdminUser/AdminUserList";
+/*菜单管理*/
+import MenusList from "./views/Menus/MenusList";
+import EditMenu from "./views/Menus/EditMenu";
+
 
 const router = new Router({
     routes: [
@@ -138,6 +144,9 @@ const router = new Router({
                 {path: '/CreateShareUrl', component: CreateShareUrl},
                 {path: '/AppUpdate', component: AppUpdate},
                 {path: '/FeedBack', component: FeedBack},
+                {path: '/adminUserList', component: AdminUserList},
+                {path: '/menusList', component: MenusList},
+                {path: '/editMenu', component: EditMenu},
             ]
         },
         {path: '/', redirect: '/index'},

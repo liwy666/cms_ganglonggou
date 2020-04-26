@@ -1,70 +1,75 @@
 <template>
-	<div class = "main">
-		<div class = "button-box">
-			<el-button type = "primary"
-				@click = "$router.push({ path: 'EditCat', query: { edit_type: 'add',cat_id:'0' }})">
-				添加分类
-			</el-button>
-			<el-button type = "primary" @click = "cleanCache">清除缓存</el-button>
-		</div>
-		<div class = "table-box">
-			<el-table
-				:data = "tableData"
-				height = "850px"
-				stripe
-				border
-				style = "width: 100%">
+  <div class="main">
+    <div class="button-box">
+      <el-button type="primary"
+                 @click="$router.push({ path: 'EditCat', query: { edit_type: 'add',cat_id:'0' }})">
+        添加分类
+      </el-button>
+      <el-button type="primary" @click="cleanCache">清除缓存</el-button>
+    </div>
+    <div class="table-box">
+      <el-table
+          :data="tableData"
+          height="850px"
+          stripe
+          border
+          style="width: 100%">
+        <el-table-column
+            prop="cat_id"
+            label="分类id"
+            width="100">
+        </el-table-column>
+        <el-table-column
+            prop="cat_name"
+            label="分类名称"
+            width="600">
+        </el-table-column>
+        <el-table-column
+            prop="parent_name"
+            label="父分类名称"
+            width="300">
+        </el-table-column>
 				<el-table-column
-					prop = "cat_id"
-					label = "分类id"
-					width = "100">
+						prop="parent_id"
+						label="父分类ID"
+						width="300">
 				</el-table-column>
-				<el-table-column
-					prop = "cat_name"
-					label = "分类名称"
-					width = "600">
-				</el-table-column>
-				<el-table-column
-					prop = "parent_id"
-					label = "父分类id"
-					width = "600">
-				</el-table-column>
-				<el-table-column
-					fixed = "right"
-					label = "操作"
-					width = "400">
-					<template slot-scope = "scope">
-						<el-button type = "text" size = "small"
-							@click.native.prevent = "delCat(scope.$index, tableData)">
-							删除分类
-						</el-button>
-						<el-button type = "text" size = "small"
-							@click.native.prevent = "updCat(scope.$index, tableData)">
-							编辑分类
-						</el-button>
-						<el-button type = "text" size = "small" v-if = "tableData[scope.$index].parent_id !== 0"
-							@click.native.prevent = "shearGoodsBycatId(scope.$index, tableData)">转移商品
-						</el-button>
-						<!--<el-button type = "text" size = "small" v-if = "tableData[scope.$index].parent_id !== 0"
-							@click.native.prevent = "copyGoodsBycatId(scope.$index, tableData)">复制商品
-						</el-button>-->
-						<el-button type = "text" size = "small" v-if = "tableData[scope.$index].parent_id !== 0"
-							@click.native.prevent = "SeeGoodsByCatId(scope.$index, tableData)">查看下属商品
-						</el-button>
-					</template>
-				</el-table-column>
-			</el-table>
-		</div>
-		<el-pagination
-			@size-change = "getCatList"
-			@current-change = "getCatList"
-			:current-page.sync = "page"
-			:page-sizes = "[10, 20, 30, 40]"
-			:page-size.sync = "limit"
-			layout = "sizes, prev, pager, next"
-			:total = "count">
-		</el-pagination>
-	</div>
+        <el-table-column
+            fixed="right"
+            label="操作"
+            width="400">
+          <template slot-scope="scope">
+            <el-button type="text" size="small"
+                       @click.native.prevent="delCat(scope.$index, tableData)">
+              删除分类
+            </el-button>
+            <el-button type="text" size="small"
+                       @click.native.prevent="updCat(scope.$index, tableData)">
+              编辑分类
+            </el-button>
+            <el-button type="text" size="small" v-if="tableData[scope.$index].parent_id !== 0"
+                       @click.native.prevent="shearGoodsBycatId(scope.$index, tableData)">转移商品
+            </el-button>
+            <!--<el-button type = "text" size = "small" v-if = "tableData[scope.$index].parent_id !== 0"
+              @click.native.prevent = "copyGoodsBycatId(scope.$index, tableData)">复制商品
+            </el-button>-->
+            <el-button type="text" size="small" v-if="tableData[scope.$index].parent_id !== 0"
+                       @click.native.prevent="SeeGoodsByCatId(scope.$index, tableData)">查看下属商品
+            </el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+    </div>
+    <el-pagination
+        @size-change="getCatList"
+        @current-change="getCatList"
+        :current-page.sync="page"
+        :page-sizes="[10, 20, 30, 40]"
+        :page-size.sync="limit"
+        layout="sizes, prev, pager, next"
+        :total="count">
+    </el-pagination>
+  </div>
 </template>
 <script>
     export default {
@@ -135,7 +140,13 @@
                 let sort_order = rows[index].sort_order;
                 this.$router.push({
                     path: 'EditCat',
-                    query: {edit_type: 'upd', parent_id: parent_id, cat_name: cat_name, cat_id: cat_id,sort_order:sort_order}
+                    query: {
+                        edit_type: 'upd',
+                        parent_id: parent_id,
+                        cat_name: cat_name,
+                        cat_id: cat_id,
+                        sort_order: sort_order
+                    }
                 })
             }
             , SeeGoodsByCatId(index, rows) {
@@ -160,5 +171,5 @@
         },
     };
 </script>
-<style lang = "scss">
+<style lang="scss">
 </style>
